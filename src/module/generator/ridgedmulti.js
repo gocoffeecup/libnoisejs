@@ -85,7 +85,7 @@ LIBNOISE.module.generator.RidgedMulti.prototype = {
 			weight  = signal * this.gain;
 
 			// Clamp value to within 0 and 1
-			weight  = Misc.clampValue(weight, 0.0, 1.0);
+			weight  = LIBNOISE.Misc.clampValue(weight, 0.0, 1.0);
 
 			// Add the signal to the output value.
 			value  += (signal * this.weights[octave]);
@@ -102,5 +102,27 @@ LIBNOISE.module.generator.RidgedMulti.prototype = {
 	}
 
 };
+LIBNOISE.module.generator.RidgedMulti.prototype.SetFrequency = function(f){
+  this.frequency = f
+};
 
+LIBNOISE.module.generator.RidgedMulti.prototype.SetLacunarity = function(l){
+  this.lacunarity = l
+};
+
+LIBNOISE.module.generator.RidgedMulti.prototype.SetOctaves = function(o){
+  this.octaves = o
+};
+
+LIBNOISE.module.generator.RidgedMulti.prototype.SetPersistance = function(p){
+  this.persist = p
+};
+
+LIBNOISE.module.generator.RidgedMulti.prototype.SetSeed = function(s){
+  this.seed = s
+};
+
+LIBNOISE.module.generator.RidgedMulti.prototype.SetQuality = function(q){
+  this.quality = q
+};
 

@@ -50,3 +50,27 @@ LIBNOISE.module.generator.Perlin.prototype.getValue = function(x, y, z) {
 	return value;
 
 };
+
+LIBNOISE.module.generator.Perlin.prototype.SetFrequency = function(f){
+  this.frequency = f
+};
+
+LIBNOISE.module.generator.Perlin.prototype.SetLacunarity = function(l){
+  this.lacunarity = l
+};
+
+LIBNOISE.module.generator.Perlin.prototype.SetOctaves = function(o){
+  this.octaves = o
+};
+
+LIBNOISE.module.generator.Perlin.prototype.SetPersistence = function(p){
+  this.persist = p
+};
+
+LIBNOISE.module.generator.Perlin.prototype.SetSeed = function(s){
+  this.seed = s
+};
+
+LIBNOISE.module.generator.Perlin.prototype.SetQuality = function(q){
+  this.quality = q
+};

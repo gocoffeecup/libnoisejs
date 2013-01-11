@@ -151,3 +151,11 @@ LIBNOISE.module.selector.Select.prototype = {
 
 };
 
+LIBNOISE.module.selector.Select.prototype.SetEdgeFalloff = function(e){
+  this.edge = e
+}
+
+
+LIBNOISE.module.selector.Select.prototype.SetControlModule = function(m){
+  this.controlModule = m
+} 

@@ -36,9 +36,7 @@ LIBNOISE.module.generator.Voronoi.prototype.getValue = function(x, y, z) {
 	// through each of the nearby cubes until we find a cube with a seed point
 	// that is closest to the specified position.
 	for (var zCur = zInt - 2; zCur <= zInt + 2; zCur++) {
-
 		for (var yCur = yInt - 2; yCur <= yInt + 2; yCur++) {
-
 			for (var xCur = xInt - 2; xCur <= xInt + 2; xCur++) {
 
 				// Calculate the position and distance to the seed point inside of
@@ -52,30 +50,23 @@ LIBNOISE.module.generator.Voronoi.prototype.getValue = function(x, y, z) {
 				dist    = parseFloat(xDist * xDist + yDist * yDist + zDist * zDist);
 
 				if (dist < minDist) {
-
 					// This seed point is closer to any others found so far, so record
 					// this seed point.
 					minDist     = dist;
 					xCandidate  = xPos;
 					yCandidate  = yPos;
 					zCandidate  = zPos;
-
 				}
-
 			}
-
 		}
-
 	}
 
 	if (this.distance) {
-
 		// Determine the distance to the nearest seed point.
 		xDist = xCandidate - x;
 		yDist = yCandidate - y;
 		zDist = zCandidate - z;
 		value = (Math.sqrt(xDist * xDist + yDist * yDist + zDist * zDist)) * LIBNOISE.MathConsts.SQRT_3 - 1.0;
-
 	}
 
 	// Return the calculated distance with the displacement value applied.
@@ -88,3 +79,17 @@ LIBNOISE.module.generator.Voronoi.prototype.getValue = function(x, y, z) {
 	);
 
 };
+
+LIBNOISE.module.generator.Voronoi.prototype.SetFrequency = function(f){
+  this.frequency = f
+};
+
+LIBNOISE.module.generator.Voronoi.prototype.SetDisplacement = function(d){
+  this.displacement = d
+};
+
+LIBNOISE.module.generator.Voronoi.prototype.SetSeed = function(s){
+  this.seed = s
+};
+
+

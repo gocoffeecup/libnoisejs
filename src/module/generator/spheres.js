@@ -19,3 +19,7 @@ LIBNOISE.module.generator.Spheres.prototype.getValue = function(x, y, z) {
 	return 1.0 - (nearestDist * 4.0); // Puts it in the -1.0 to +1.0 range.
 
 };
+
+LIBNOISE.module.generator.Spheres.prototype.SetFrequency = function(f){
+  this.frequency = f
+};

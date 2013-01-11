@@ -1428,6 +1428,10 @@ LIBNOISE.module.generator.Billow.prototype.getValue = function(x, y, z) {
 	return value + 0.5;
 
 };
+
+LIBNOISE.module.generator.Billow.prototype.setFrequency = function(f){
+  this.frequency = f
+}
 LIBNOISE.module.generator.Checkerboard = function() {};
 
 LIBNOISE.module.generator.Checkerboard.prototype.getValue = function(x, y, z) {
@@ -1454,6 +1458,10 @@ LIBNOISE.module.generator.Const.prototype.getValue = function() {
 
 };
 
+LIBNOISE.module.generator.Const.setValue = function(v){
+  this.value = v
+};
+
 LIBNOISE.module.generator.Cylinders = function(frequency) {
 
 	this.frequency = frequency || LIBNOISE.module.generator.Cylinders.DEFAULT_CYLINDERS_FREQUENCY;
@@ -1476,6 +1484,11 @@ LIBNOISE.module.generator.Cylinders.prototype.getValue = function(x, y, z) {
     return 1.0 - (nearestDist * 4.0); // Puts it in the -1.0 to +1.0 range.
 
 };
+
+LIBNOISE.module.generator.Cylinders.setFrequency = function(f){
+  this.frequency = f
+};
+
 
 LIBNOISE.module.generator.Perlin = function(frequency, lacunarity, octaves, persist, seed, quality) {
 
@@ -1528,6 +1541,30 @@ LIBNOISE.module.generator.Perlin.prototype.getValue = function(x, y, z) {
 
 	return value;
 
+};
+
+LIBNOISE.module.generator.Perlin.prototype.SetFrequency = function(f){
+  this.frequency = f
+};
+
+LIBNOISE.module.generator.Perlin.prototype.SetLacunarity = function(l){
+  this.lacunarity = l
+};
+
+LIBNOISE.module.generator.Perlin.prototype.SetOctaves = function(o){
+  this.octaves = o
+};
+
+LIBNOISE.module.generator.Perlin.prototype.SetPersistence = function(p){
+  this.persist = p
+};
+
+LIBNOISE.module.generator.Perlin.prototype.SetSeed = function(s){
+  this.seed = s
+};
+
+LIBNOISE.module.generator.Perlin.prototype.SetQuality = function(q){
+  this.quality = q
 };
 LIBNOISE.module.generator.RidgedMulti = function(frequency, lacunarity, octaves, seed, quality, offset, gain) {
 
@@ -1616,7 +1653,7 @@ LIBNOISE.module.generator.RidgedMulti.prototype = {
 			weight  = signal * this.gain;
 
 			// Clamp value to within 0 and 1
-			weight  = Misc.clampValue(weight, 0.0, 1.0);
+			weight  = LIBNOISE.Misc.clampValue(weight, 0.0, 1.0);
 
 			// Add the signal to the output value.
 			value  += (signal * this.weights[octave]);
@@ -1633,7 +1670,29 @@ LIBNOISE.module.generator.RidgedMulti.prototype = {
 	}
 
 };
+LIBNOISE.module.generator.RidgedMulti.prototype.SetFrequency = function(f){
+  this.frequency = f
+};
 
+LIBNOISE.module.generator.RidgedMulti.prototype.SetLacunarity = function(l){
+  this.lacunarity = l
+};
+
+LIBNOISE.module.generator.RidgedMulti.prototype.SetOctaves = function(o){
+  this.octaves = o
+};
+
+LIBNOISE.module.generator.RidgedMulti.prototype.SetPersistance = function(p){
+  this.persist = p
+};
+
+LIBNOISE.module.generator.RidgedMulti.prototype.SetSeed = function(s){
+  this.seed = s
+};
+
+LIBNOISE.module.generator.RidgedMulti.prototype.SetQuality = function(q){
+  this.quality = q
+};
 
 
 LIBNOISE.module.generator.Spheres = function(frequency) {
@@ -1656,6 +1715,10 @@ LIBNOISE.module.generator.Spheres.prototype.getValue = function(x, y, z) {
 
 	return 1.0 - (nearestDist * 4.0); // Puts it in the -1.0 to +1.0 range.
 
+};
+
+LIBNOISE.module.generator.Spheres.prototype.SetFrequency = function(f){
+  this.frequency = f
 };
 
 LIBNOISE.module.generator.Voronoi = function(frequency, displacement, distance, seed) {
@@ -1696,9 +1759,7 @@ LIBNOISE.module.generator.Voronoi.prototype.getValue = function(x, y, z) {
 	// through each of the nearby cubes until we find a cube with a seed point
 	// that is closest to the specified position.
 	for (var zCur = zInt - 2; zCur <= zInt + 2; zCur++) {
-
 		for (var yCur = yInt - 2; yCur <= yInt + 2; yCur++) {
-
 			for (var xCur = xInt - 2; xCur <= xInt + 2; xCur++) {
 
 				// Calculate the position and distance to the seed point inside of
@@ -1712,30 +1773,23 @@ LIBNOISE.module.generator.Voronoi.prototype.getValue = function(x, y, z) {
 				dist    = parseFloat(xDist * xDist + yDist * yDist + zDist * zDist);
 
 				if (dist < minDist) {
-
 					// This seed point is closer to any others found so far, so record
 					// this seed point.
 					minDist     = dist;
 					xCandidate  = xPos;
 					yCandidate  = yPos;
 					zCandidate  = zPos;
-
 				}
-
 			}
-
 		}
-
 	}
 
 	if (this.distance) {
-
 		// Determine the distance to the nearest seed point.
 		xDist = xCandidate - x;
 		yDist = yCandidate - y;
 		zDist = zCandidate - z;
 		value = (Math.sqrt(xDist * xDist + yDist * yDist + zDist * zDist)) * LIBNOISE.MathConsts.SQRT_3 - 1.0;
-
 	}
 
 	// Return the calculated distance with the displacement value applied.
@@ -1748,6 +1802,20 @@ LIBNOISE.module.generator.Voronoi.prototype.getValue = function(x, y, z) {
 	);
 
 };
+
+LIBNOISE.module.generator.Voronoi.prototype.SetFrequency = function(f){
+  this.frequency = f
+};
+
+LIBNOISE.module.generator.Voronoi.prototype.SetDisplacement = function(d){
+  this.displacement = d
+};
+
+LIBNOISE.module.generator.Voronoi.prototype.SetSeed = function(s){
+  this.seed = s
+};
+
+
 
 LIBNOISE.module.modifier.Abs = function(sourceModule) {
 
@@ -2036,6 +2104,13 @@ LIBNOISE.module.modifier.ScaleBias.prototype.getValue = function(x, y, z) {
 
 };
 
+LIBNOISE.module.modifier.ScaleBias.prototype.SetScale = function(s){
+  this.scale = s
+};
+
+LIBNOISE.module.modifier.ScaleBias.prototype.SetBias = function(b){
+  this.bias = b
+};
 
 LIBNOISE.module.modifier.Terrace = function(sourceModule, controlPoints, invert) {
 

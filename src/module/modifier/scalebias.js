@@ -21,3 +21,10 @@ LIBNOISE.module.modifier.ScaleBias.prototype.getValue = function(x, y, z) {
 
 };
 
+LIBNOISE.module.modifier.ScaleBias.prototype.SetScale = function(s){
+  this.scale = s
+};
+
+LIBNOISE.module.modifier.ScaleBias.prototype.SetBias = function(b){
+  this.bias = b
+};

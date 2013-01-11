@@ -20,3 +20,8 @@ LIBNOISE.module.generator.Cylinders.prototype.getValue = function(x, y, z) {
     return 1.0 - (nearestDist * 4.0); // Puts it in the -1.0 to +1.0 range.
 
 };
+
+LIBNOISE.module.generator.Cylinders.setFrequency = function(f){
+  this.frequency = f
+};
+

@@ -11,3 +11,7 @@ LIBNOISE.module.generator.Const.prototype.getValue = function() {
 	return this.value;
 
 };
+
+LIBNOISE.module.generator.Const.setValue = function(v){
+  this.value = v
+};

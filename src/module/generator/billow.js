@@ -50,3 +50,7 @@ LIBNOISE.module.generator.Billow.prototype.getValue = function(x, y, z) {
 	return value + 0.5;
 
 };
+
+LIBNOISE.module.generator.Billow.prototype.setFrequency = function(f){
+  this.frequency = f
+}
